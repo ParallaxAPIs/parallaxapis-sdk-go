@@ -185,3 +185,5 @@ func DetectChallengeAndParse(body, prevCookie string) (bool, *TaskDatadomeCookie
 
 	return false, nil, "", nil
 }
+
+//:)
