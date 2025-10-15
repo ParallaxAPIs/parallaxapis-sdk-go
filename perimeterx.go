@@ -35,7 +35,7 @@ func (sdk *PerimeterxSDK) GenerateHoldCaptcha(task TaskGenerateHoldCaptcha) (*Ge
 
 	var resp GenHoldCaptchaResponse
 
-	if err := sdk.request("/gen", reqBody, &resp); err != nil {
+	if err := sdk.request("/holdcaptcha", reqBody, &resp); err != nil {
 		return nil, err
 	}
 
