@@ -1,6 +1,7 @@
 package parallaxsdk
 
-const DefaultAPIHost = "https://dd.parallaxsystems.io"
+const DefaultDDHost = "https://dd.parallaxsystems.io"
+const DefaultPXHost = "https://api.parallaxsystems.io"
 
 const (
 	PD_Captcha      = "captcha"

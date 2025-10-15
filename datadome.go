@@ -13,9 +13,9 @@ var (
 	datadomeBlockUrlRe = regexp.MustCompile(`geo\.captcha\-delivery\.com\/(?:interstitial|captcha)`)
 	// Datadome script object regexp
 	datadomeHtmlScriptRe = regexp.MustCompile(`dd=\{[^}]+\}`)
-	// Regexp for single quoted keys, like 'key':...
+	// Regexp for single quoted keys
 	singleQuotedKeyRe = regexp.MustCompile(`'((?:[^'\\]|\\.)*)'\s*:`)
-	// Regexp for single quoted values, like ...:'value':
+	// Regexp for single quoted values
 	singleQuotedValueRe = regexp.MustCompile(`:\s*'([^'\\]*(?:\\.[^'\\]*)*)'`)
 )
 
@@ -29,11 +29,6 @@ const (
 )
 
 // GenerateUserAgent generates a user agent data.
-// Sends a POST request to the /useragent endpoint with the provided task parameters.
-// Returns the generated user agent response or an error if the API responds with an error.
-//
-// task: The task object containing parameters for user agent generation.
-// Returns: Pointer to UserAgentResponse and error.
 func (s *SDK) GenerateUserAgent(task TaskGenUserAgent) (*UserAgentResponse, error) {
 	reqBody := PayloadGenUserAgent{
 		Auth:   s.AuthKey,
@@ -48,11 +43,6 @@ func (s *SDK) GenerateUserAgent(task TaskGenUserAgent) (*UserAgentResponse, erro
 }
 
 // GenerateDatadomeCookie generates a DataDome cookie using the provided task parameters.
-// Sends a POST request to the /gen endpoint with the provided task parameters.
-// Returns the generated DataDome cookie response or an error if the API responds with an error.
-//
-// task: The task object containing parameters for cookie generation.
-// Returns: Pointer to DatadomeCookieResponse and error.
 func (s *SDK) GenerateDatadomeCookie(task TaskDatadomeCookie) (*DatadomeCookieResponse, error) {
 	reqBody := PayloadGenDatadomeCookie{
 		Auth:        s.AuthKey,
@@ -71,7 +61,6 @@ func (s *SDK) GenerateDatadomeCookie(task TaskDatadomeCookie) (*DatadomeCookieRe
 }
 
 // ParseChallengeURL parses a DataDome challenge URL and extracts the challenge data and product type.
-// Updated to match the Python SDK logic, including t=bv permanent block detection and Init type.
 func ParseChallengeURL(challengeURL, prevCookie string) (*TaskDatadomeCookieData, string, error) {
 	u, err := url.Parse(challengeURL)
 	if err != nil {

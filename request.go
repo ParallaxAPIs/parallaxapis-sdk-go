@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 type SDK struct {
@@ -42,7 +43,11 @@ func NewDatadomeSDK(key, host string) *DatadomeSDK {
 
 func CreateClient(authKey, apiHost string) *SDK {
 	if apiHost == "" {
-		apiHost = DefaultAPIHost
+		if strings.HasPrefix(authKey, "PX") {
+			apiHost = DefaultPXHost
+		} else if strings.HasPrefix(authKey, "DD") {
+			apiHost = DefaultDDHost
+		}
 	}
 	return &SDK{
 		AuthKey: authKey,
