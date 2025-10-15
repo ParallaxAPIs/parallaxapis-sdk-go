@@ -28,6 +28,3 @@ var ErrUnparsableDatadomeJSONBody = fmt.Errorf("unparsable DataDome JSON body")
 
 // ErrNoDatadomeValuesInHtml means no Datadome values were found in the HTML body
 var ErrNoDatadomeValuesInHtml = fmt.Errorf("no DataDome values in HTML body")
-
-// ErrUnparsableDatadomeHTMLBody means no sdk couldn't parse
-var ErrUnparsableDatadomeHTMLBody = fmt.Errorf("no DataDome values in HTML body")
