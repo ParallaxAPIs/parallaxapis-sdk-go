@@ -23,7 +23,7 @@ import "github.com/parallaxsystems/parallax-sdk-go"
 sdk := parallaxsdk.NewDatadomeSDK("key", "")
 
 // Custom host
-sdk := parallaxsdk.NewDatadomeSDK("key", "example.host.com")
+sdk := parallaxsdk.NewDatadomeSDK("key", "https://example.host.com")
 ```
 
 ### 🕵️‍♂️ Generate New User Agent
