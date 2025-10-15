@@ -65,21 +65,16 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 	if err != nil {
 		return fmt.Errorf("POST %s failed: %w", endpoint, err)
 	}
-
 	defer resp.Body.Close()
 
-	body := bytes.NewBuffer(nil)
-
-	_, err = io.Copy(body, resp.Body)
-
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return fmt.Errorf("read response: %w", err)
 	}
 
 	var env ErrorEnv
-
-	if err := json.Unmarshal(body.Bytes(), &env); err != nil {
-		return fmt.Errorf("unmarshal envelope: %w", err)
+	if err := json.Unmarshal(body, &env); err != nil {
+		return fmt.Errorf("unmarshal envelope: %w, body: %s", err, string(body))
 	}
 
 	if env.Error {
@@ -90,7 +85,7 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 		return &APIError{Message: env.Cookie}
 	}
 
-	if err := json.Unmarshal(body.Bytes(), out); err != nil {
+	if err := json.Unmarshal(body, out); err != nil {
 		return fmt.Errorf("unmarshal body to %T: %w", out, err)
 	}
 
