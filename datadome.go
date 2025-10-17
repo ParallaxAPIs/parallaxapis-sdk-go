@@ -60,6 +60,26 @@ func (s *SDK) GenerateDatadomeCookie(task TaskDatadomeCookie) (*DatadomeCookieRe
 	return &resp, nil
 }
 
+// GenerateDatadomeTagsCookie generates a DataDome tags cookie using the provided task parameters.
+func (s *SDK) GenerateDatadomeTagsCookie(task TaskDatadomeTagsCookie) (*DatadomeCookieResponse, error) {
+	reqBody := PayloadGenDatadomeCookie{
+		Auth:        s.AuthKey,
+		Site:        task.Site,
+		Region:      task.Region,
+		Proxyregion: task.Proxyregion,
+		Proxy:       task.Proxy,
+		Pd:          task.Pd,
+		Data: TaskDatadomeCookieData{
+			Cid: "null",
+		},
+	}
+	var resp DatadomeCookieResponse
+	if err := s.request("/gen", reqBody, &resp); err != nil {
+		return nil, err
+	}
+	return &resp, nil
+}
+
 // ParseChallengeURL parses a DataDome challenge URL and extracts the challenge data and product type.
 func ParseChallengeURL(challengeURL, prevCookie string) (*TaskDatadomeCookieData, string, error) {
 	u, err := url.Parse(challengeURL)

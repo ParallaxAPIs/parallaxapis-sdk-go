@@ -15,6 +15,15 @@ type TaskDatadomeCookieData struct {
 	InitialCid string `json:"initialCid"`
 }
 
+// TaskDatadomeTagsCookie represents a task for generating a DataDome tags cookie.
+type TaskDatadomeTagsCookie struct {
+	Site        string `json:"site"`        // Site for which to generate the cookie.
+	Region      string `json:"region"`      // Site region.
+	Proxyregion string `json:"proxyregion"` // The region of your proxy (either "eu" or "us").
+	Proxy       string `json:"proxy"`       // Proxy address.
+	Pd          string `json:"pd"`          // Product type.
+}
+
 // TaskDatadomeCookie represents a task for generating a DataDome cookie.
 type TaskDatadomeCookie struct {
 	Site        string                 `json:"site"`        // Site for which to generate the cookie.
