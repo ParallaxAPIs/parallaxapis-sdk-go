@@ -21,7 +21,6 @@ type TaskDatadomeTagsCookie struct {
 	Region      string `json:"region"`      // Site region.
 	Proxyregion string `json:"proxyregion"` // The region of your proxy (either "eu" or "us").
 	Proxy       string `json:"proxy"`       // Proxy address.
-	Pd          string `json:"pd"`          // Product type.
 }
 
 // TaskDatadomeCookie represents a task for generating a DataDome cookie.

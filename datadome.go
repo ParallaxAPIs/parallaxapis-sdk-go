@@ -68,7 +68,7 @@ func (s *SDK) GenerateDatadomeTagsCookie(task TaskDatadomeTagsCookie) (*Datadome
 		Region:      task.Region,
 		Proxyregion: task.Proxyregion,
 		Proxy:       task.Proxy,
-		Pd:          task.Pd,
+		Pd:          PD_Init,
 		Data: TaskDatadomeCookieData{
 			Cid: "null",
 		},
