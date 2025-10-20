@@ -100,7 +100,7 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 
 	var env ErrorEnv
 	if err := json.Unmarshal(body, &env); err != nil {
-		return fmt.Errorf("unmarshal envelope: %w, body: %s", err, string(body))
+		return fmt.Errorf("unmarshal envelope: %w, body: \n%s", err, string(body))
 	}
 
 	if env.Error {
