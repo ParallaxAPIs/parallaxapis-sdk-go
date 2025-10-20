@@ -56,6 +56,10 @@ func CreateClient(authKey, apiHost string, options ...Option) *SDK {
 		}
 	}
 
+	if !strings.HasPrefix(apiHost, "http://") && !strings.HasPrefix(apiHost, "https://") {
+		apiHost = "https://" + apiHost
+	}
+
 	sdk := &SDK{
 		AuthKey: authKey,
 		APIHost: apiHost,
