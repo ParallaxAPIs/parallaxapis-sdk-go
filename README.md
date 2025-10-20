@@ -99,6 +99,77 @@ fmt.Println(cookieResp)
 // }
 ```
 
+### 🏷️ Generate Tags Cookie
+
+```go
+sdk := parallaxsdk.NewDatadomeSDK("key", "")
+cookieResp, err := sdk.GenerateDatadomeTagsCookie(parallaxsdk.TaskDatadomeTagsCookie{
+    Site: "vinted",
+    Region: "pl",
+    Proxy: "http://user:pas@addr:port",
+    Proxyregion: "eu",
+})
+if err != nil {
+    panic(err)
+}
+fmt.Println(cookieResp)
+// Output:
+// &parallaxsdk.DatadomeCookieResponse{
+//     Message: "datadome=cookie_value",
+//     UserAgent: "Mozilla/5.0 ...",
+// }
+```
+
+### 🔍 Detect and Parse Challenge
+
+```go
+sdk := parallaxsdk.NewDatadomeSDK("key", "")
+responseBody := "<html>...</html>" // Response body from website
+prevCookie := "previous_datadome_cookie"
+
+isBlocked, taskData, productType, err := parallaxsdk.DetectChallengeAndParse(responseBody, prevCookie)
+if err != nil {
+    panic(err)
+}
+if isBlocked {
+    fmt.Printf("Datadome challenge detected: %s\n", productType)
+    // Use taskData with GenerateDatadomeCookie to solve the challenge
+    cookieResp, err := sdk.GenerateDatadomeCookie(parallaxsdk.TaskDatadomeCookie{
+        Site: "vinted",
+        Region: "pl",
+        Data: *taskData,
+        Pd: productType,
+        Proxy: "http://user:pas@addr:port",
+        Proxyregion: "eu",
+    })
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(cookieResp)
+}
+```
+
+### 📄 Parse Challenge HTML
+
+```go
+htmlBody := "<html><script>dd={cid:'abc',t:'fe',s:123,e:'xyz',b:'1'}</script></html>"
+prevCookie := "previous_datadome_cookie"
+
+taskData, productType, err := parallaxsdk.ParseChallengeHTML(htmlBody, prevCookie)
+if err != nil {
+    panic(err)
+}
+fmt.Println(taskData, productType)
+// Output:
+// &parallaxsdk.TaskDatadomeCookieData{
+//     Cid: "previous_datadome_cookie",
+//     B: "1",
+//     E: "xyz",
+//     S: "123",
+//     InitialCid: "abc",
+// }, "captcha"
+```
+
 ---
 
 ## 🛡️ Perimeterx Usage
