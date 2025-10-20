@@ -17,13 +17,27 @@ go get github.com/parallaxsystems/parallax-sdk-go
 ### ⚡ SDK Initialization
 
 ```go
-import "github.com/parallaxsystems/parallax-sdk-go"
+import (
+    "time"
+    "github.com/parallaxsystems/parallax-sdk-go"
+)
 
 // Basic initialization with API key
 sdk := parallaxsdk.NewDatadomeSDK("key", "")
 
 // Custom host
 sdk := parallaxsdk.NewDatadomeSDK("key", "https://example.host.com")
+
+// With custom timeout (default is 30 seconds)
+sdk := parallaxsdk.NewDatadomeSDK("key", "", parallaxsdk.WithCustomTimeout(60*time.Second))
+
+// With HTTP proxy for client requests
+sdk := parallaxsdk.NewDatadomeSDK("key", "", parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
+
+// Multiple options combined
+sdk := parallaxsdk.NewDatadomeSDK("key", "https://example.host.com",
+    parallaxsdk.WithCustomTimeout(45*time.Second),
+    parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
 ```
 
 ### 🕵️‍♂️ Generate New User Agent
@@ -177,13 +191,27 @@ fmt.Println(taskData, productType)
 ### ⚡ SDK Initialization
 
 ```go
-import "github.com/parallaxsystems/parallax-sdk-go"
+import (
+    "time"
+    "github.com/parallaxsystems/parallax-sdk-go"
+)
 
 // Basic initialization with API key
 sdk := parallaxsdk.NewPerimeterxSDK("key", "")
 
 // Custom host
 sdk := parallaxsdk.NewPerimeterxSDK("key", "example.host.com")
+
+// With custom timeout (default is 30 seconds)
+sdk := parallaxsdk.NewPerimeterxSDK("key", "", parallaxsdk.WithCustomTimeout(60*time.Second))
+
+// With HTTP proxy for client requests
+sdk := parallaxsdk.NewPerimeterxSDK("key", "", parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
+
+// Multiple options combined
+sdk := parallaxsdk.NewPerimeterxSDK("key", "example.host.com",
+    parallaxsdk.WithCustomTimeout(45*time.Second),
+    parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
 ```
 
 ### 🍪 Generate PX Cookie

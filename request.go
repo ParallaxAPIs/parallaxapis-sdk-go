@@ -5,8 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"net/http"
+	"net/url"
 	"strings"
+
+	http "github.com/bogdanfinn/fhttp"
 )
 
 type SDK struct {
@@ -23,25 +25,29 @@ type PerimeterxSDK struct {
 	*SDK
 }
 
-func NewPerimeterxSDK(key, host string) *PerimeterxSDK {
+func NewPerimeterxSDK(key, host string, options ...Option) *PerimeterxSDK {
 	return &PerimeterxSDK{
 		SDK: CreateClient(
 			key,
 			host,
+			options...,
 		),
 	}
 }
 
-func NewDatadomeSDK(key, host string) *DatadomeSDK {
+func NewDatadomeSDK(key, host string, options ...Option) *DatadomeSDK {
 	return &DatadomeSDK{
 		SDK: CreateClient(
 			key,
 			host,
+			options...,
 		),
 	}
 }
 
-func CreateClient(authKey, apiHost string) *SDK {
+func CreateClient(authKey, apiHost string, options ...Option) *SDK {
+	clientConfig := parseOptions(options)
+
 	if apiHost == "" {
 		if strings.HasPrefix(authKey, "PX") {
 			apiHost = DefaultPXHost
@@ -49,11 +55,22 @@ func CreateClient(authKey, apiHost string) *SDK {
 			apiHost = DefaultDDHost
 		}
 	}
-	return &SDK{
+
+	sdk := &SDK{
 		AuthKey: authKey,
 		APIHost: apiHost,
-		client:  &http.Client{},
+		client:  &http.Client{Timeout: clientConfig.timeout},
 	}
+
+	if clientConfig.proxy != nil {
+		sdk.client.Transport = &http.Transport{
+			Proxy: func(r *http.Request) (*url.URL, error) {
+				return url.Parse(*clientConfig.proxy)
+			},
+		}
+	}
+
+	return sdk
 }
 
 func (s *SDK) request(endpoint string, payload any, out any) error {
