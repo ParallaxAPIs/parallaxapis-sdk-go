@@ -274,4 +274,6 @@ MIT
 
 ---
 
-Made with ❤️ by Parallax Systems
+## 🔑 Keywords
+
+**DataDome bypass** • **PerimeterX bypass** • **Anti-bot bypass** • **Bot detection bypass** • **CAPTCHA solver** • **Cookie generator** • **Go web scraping** • **Go bot automation** • **Golang anti-bot** • **DataDome Go SDK** • **PerimeterX Go SDK** • **Headless browser alternative** • **Request-based bypass** • **Go automation** • **Web scraping Go** • **Bot mitigation bypass** • **Sensor data generation** • **Challenge solver**
