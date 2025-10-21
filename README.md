@@ -288,19 +288,19 @@ fmt.Printf("%+v\n", holdCaptchaResult)
 
 - Full API docs & support: [Discord](https://www.parallaxsystems.io/join?s=gh)
 
----
+
 
 ## 🌟 Contributing
 
 Got feedback or found a bug? Feel free to open an issue or send us a pull request!
 
----
+
 
 ## 🏢 Enterprise
 
 Unlock enterprise-grade performance with custom solutions, expanded limits, and expert support. Contact us to learn more.
 
----
+
 
 ## 📝 License
 
