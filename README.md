@@ -279,6 +279,12 @@ fmt.Printf("%+v\n", holdCaptchaResult)
 
 ---
 
+## 🏢 Enterprise
+
+Unlock enterprise-grade performance with custom solutions, expanded limits, and expert support. Contact us to learn more.
+
+---
+
 ## 📝 License
 
 MIT
