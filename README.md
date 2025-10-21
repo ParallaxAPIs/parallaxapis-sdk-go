@@ -30,7 +30,7 @@ Get started with ParallaxAPIs SDK's in under 5 minutes:
 ## 📦 Installation
 
 ```bash
-go get github.com/parallaxsystems/parallax-sdk-go
+go get github.com/parallaxapis/parallaxapis-sdk-go
 ```
 
 ---
@@ -42,7 +42,7 @@ go get github.com/parallaxsystems/parallax-sdk-go
 ```go
 import (
     "time"
-    "github.com/parallaxsystems/parallax-sdk-go"
+    "github.com/parallaxapis/parallaxapis-sdk-go"
 )
 
 // Basic initialization with API key
@@ -216,7 +216,7 @@ fmt.Println(taskData, productType)
 ```go
 import (
     "time"
-    "github.com/parallaxsystems/parallax-sdk-go"
+    "github.com/parallaxapis/parallaxapis-sdk-go"
 )
 
 // Basic initialization with API key
@@ -286,8 +286,8 @@ fmt.Printf("%+v\n", holdCaptchaResult)
 
 ## 📚 Documentation & Help
 
-- Full API docs: [GitHub](https://github.com/parallaxsystems/parallax-sdk-go)
-- Issues & support: [GitHub Issues](https://github.com/parallaxsystems/parallax-sdk-go/issues)
+- Full API docs: [GitHub](https://github.com/parallaxapis/parallaxapis-sdk-go)
+- Issues & support: [GitHub Issues](https://github.com/parallaxapis/parallaxapis-sdk-go/issues)
 
 ---
 
