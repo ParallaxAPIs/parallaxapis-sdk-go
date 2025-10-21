@@ -17,11 +17,11 @@ type TaskDatadomeCookieData struct {
 
 // TaskDatadomeTagsCookie represents a task for generating a DataDome tags cookie.
 type TaskDatadomeTagsCookie struct {
-	Site        string                 `json:"site"`        // Site for which to generate the cookie.
-	Region      string                 `json:"region"`      // Site region.
-	Proxyregion string                 `json:"proxyregion"` // The region of your proxy (either "eu" or "us").
-	Proxy       string                 `json:"proxy"`       // Proxy address.
-	Data        TaskDatadomeCookieData `json:"data"`        // Data required for cookie generation.
+	Site        string `json:"site"`        // Site for which to generate the cookie.
+	Region      string `json:"region"`      // Site region.
+	Proxyregion string `json:"proxyregion"` // The region of your proxy (either "eu" or "us").
+	Proxy       string `json:"proxy"`       // Proxy address.
+	Cid         string `json:"cid"`         // Data required for cookie generation.
 }
 
 // TaskDatadomeCookie represents a task for generating a DataDome cookie.

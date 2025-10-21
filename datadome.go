@@ -69,7 +69,9 @@ func (s *SDK) GenerateDatadomeTagsCookie(task TaskDatadomeTagsCookie) (*Datadome
 		Proxyregion: task.Proxyregion,
 		Proxy:       task.Proxy,
 		Pd:          PD_Init,
-		Data:        task.Data,
+		Data: TaskDatadomeCookieData{
+			Cid: task.Cid,
+		},
 	}
 	var resp DatadomeCookieResponse
 	if err := s.request("/gen", reqBody, &resp); err != nil {
