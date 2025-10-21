@@ -163,7 +163,7 @@ func ParseChallengeHTML(htmlBody, prevCookie string) (*TaskDatadomeCookieData, s
 	}
 
 	return &TaskDatadomeCookieData{
-		B:          dd.B,
+		B:          fmt.Sprint(dd.B),
 		S:          fmt.Sprint(dd.S),
 		E:          dd.E,
 		Cid:        prevCookie,

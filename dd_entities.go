@@ -1,7 +1,7 @@
 package parallaxsdk
 
 type HtmlScriptObject struct {
-	B      string `json:"b"`
+	B      int    `json:"b"`
 	Rt     string `json:"rt"`
 	Cid    string `json:"cid"`
 	Hsh    string `json:"hsh"`
