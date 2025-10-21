@@ -1,4 +1,4 @@
-# 🚀 ParallaxAPIs SDK: Datadome & Perimeterx (Go)
+# 🚀 ParallaxAPIs Go SDK: Datadome & Perimeterx
 
 **Go SDK for bypassing DataDome and PerimeterX anti-bot protection.**
 
