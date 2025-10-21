@@ -141,6 +141,7 @@ fmt.Println(cookieResp)
 
 ```go
 sdk := parallaxsdk.NewDatadomeSDK("Key", "")
+
 cookieResp, err := sdk.GenerateDatadomeTagsCookie(parallaxsdk.TaskDatadomeTagsCookie{
     Site: "site",
     Region: "com",
@@ -223,41 +224,28 @@ result, err := sdk.GenerateCookies(parallaxsdk.TaskGeneratePXCookies{
     Proxy: "http://user:pas@addr:port",
     Proxyregion: "eu",
     Region: "com",
-    Site: "stockx",
+    Site: "site",
 })
 if err != nil {
     panic(err)
 }
-fmt.Printf("%+v\n", result)
-// Output:
-// &parallaxsdk.PxCookieResponse{
-//     Cookie: "_px3=d3sswjaltwxgAd...",
-//     Vid: "514d7e11-6962-11f0-810f-88cc16043287",
-//     Cts: "514d8e28-6962-11f0-810f-51b6xf2786b0",
-//     IsFlagged: false,
-//     IsMaybeFlagged: true,
-//     UserAgent: "Mozilla/5.0 ...",
-//     Data: "==WlrBti6vpO6rshP1CFtBsiocoO8...",
-// }
+
+fmt.Printf(result)
+
 
 holdCaptchaResult, err := sdk.GenerateHoldCaptcha(parallaxsdk.TaskGenerateHoldCaptcha{
     Proxy: "http://user:pas@addr:port",
     Proxyregion: "eu",
     Region: "com",
-    Site: "stockx",
+    Site: "site",
     Data: result.Data,
     PowPro: "",
 })
 if err != nil {
     panic(err)
 }
-fmt.Printf("%+v\n", holdCaptchaResult)
-// Output:
-// &parallaxsdk.PxCookieResponse{
-//     Cookie: "_px3=d3sswjaltwxgAd...",
-//     Vid: "514d7e11-6962-11f0-810f-88cc16043287",
-//     FlaggedPow: false,
-// }
+
+fmt.Printf(holdCaptchaResult)
 ```
 
 ---
