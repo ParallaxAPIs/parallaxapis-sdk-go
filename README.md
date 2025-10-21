@@ -199,19 +199,19 @@ import (
 )
 
 // Basic initialization with API key
-sdk := parallaxsdk.NewPerimeterxSDK("key", "")
+sdk := parallaxsdk.NewPerimeterxSDK("Key", "")
 
 // Custom host
-sdk := parallaxsdk.NewPerimeterxSDK("key", "example.host.com")
+sdk := parallaxsdk.NewPerimeterxSDK("Key", "example.host.com")
 
 // With custom timeout (default is 30 seconds)
-sdk := parallaxsdk.NewPerimeterxSDK("key", "", parallaxsdk.WithCustomTimeout(60*time.Second))
+sdk := parallaxsdk.NewPerimeterxSDK("Key", "", parallaxsdk.WithCustomTimeout(60*time.Second))
 
 // With HTTP proxy for client requests
-sdk := parallaxsdk.NewPerimeterxSDK("key", "", parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
+sdk := parallaxsdk.NewPerimeterxSDK("Key", "", parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
 
 // Multiple options combined
-sdk := parallaxsdk.NewPerimeterxSDK("key", "example.host.com",
+sdk := parallaxsdk.NewPerimeterxSDK("Key", "example.host.com",
     parallaxsdk.WithCustomTimeout(45*time.Second),
     parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
 ```
@@ -219,7 +219,8 @@ sdk := parallaxsdk.NewPerimeterxSDK("key", "example.host.com",
 ### 🍪 Generate PX Cookie
 
 ```go
-sdk := parallaxsdk.NewPerimeterxSDK("key", "")
+sdk := parallaxsdk.NewPerimeterxSDK("Key", "")
+
 result, err := sdk.GenerateCookies(parallaxsdk.TaskGeneratePXCookies{
     Proxy: "http://user:pas@addr:port",
     Proxyregion: "eu",
