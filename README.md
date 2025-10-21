@@ -1,17 +1,21 @@
 # 🚀 ParallaxAPIs SDK: Datadome & Perimeterx (Go)
 
-**High-performance Go SDK for bypassing DataDome and PerimeterX anti-bot protection.**
+**Go SDK for bypassing DataDome and PerimeterX anti-bot protection.**
 
-Built for speed and efficiency, this SDK leverages Go's concurrency features to deliver lightning-fast cookie generation and seamless integration into your Go applications. Perfect for high-throughput scraping, automation, and testing workflows.
+## 📖 About Parallax API
 
-## ✨ Why Choose the Go SDK?
+ParallaxAPIs provides a **request-based solution** for bypassing DataDome and PerimeterX anti-bot systems. Instead of relying on slow, resource-heavy browser automation, our API generates valid cookies and tokens in **200-400ms** through direct HTTP requests.
 
-- **⚡ Lightning Fast**: Native Go performance with goroutine support for concurrent operations
-- **🔧 Simple API**: Clean, idiomatic Go interfaces with comprehensive error handling
-- **🎯 Type-Safe**: Full type safety with struct-based configuration
-- **🔄 Flexible**: Multiple initialization options and custom timeout support
-- **🌐 Production-Ready**: Battle-tested in high-volume production environments
-- **📦 Zero Dependencies**: Minimal external dependencies for easy maintenance
+**What We Solve:**
+- ✅ **DataDome** - Slider captchas, interstitial pages, cookie generation, tags payload
+- ✅ **PerimeterX** - Cookie generation (_px3), challenge solver, vid & cts tokens
+
+**Key Benefits:**
+- ⚡ **Lightning Fast** - 200-400ms response times vs 2-5+ seconds for browsers
+- 🔧 **Simple Integration** - Clean API, no browser management required
+- 🚀 **Highly Scalable** - Handle thousands of concurrent requests with minimal resources
+- 💰 **Cost Effective** - Lightweight infrastructure, minimal proxy usage
+- 🔄 **Always Updated** - We handle all reverse engineering and updates for you
 
 ---
 
