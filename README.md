@@ -46,19 +46,19 @@ import (
 )
 
 // Basic initialization with API key
-sdk := parallaxsdk.NewDatadomeSDK("key", "")
+sdk := parallaxsdk.NewDatadomeSDK("Key", "")
 
 // Custom host
-sdk := parallaxsdk.NewDatadomeSDK("key", "https://example.host.com")
+sdk := parallaxsdk.NewDatadomeSDK("Key", "https://example.host.com")
 
 // With custom timeout (default is 30 seconds)
-sdk := parallaxsdk.NewDatadomeSDK("key", "", parallaxsdk.WithCustomTimeout(60*time.Second))
+sdk := parallaxsdk.NewDatadomeSDK("Key", "", parallaxsdk.WithCustomTimeout(60*time.Second))
 
 // With HTTP proxy for client requests
-sdk := parallaxsdk.NewDatadomeSDK("key", "", parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
+sdk := parallaxsdk.NewDatadomeSDK("Key", "", parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
 
 // Multiple options combined
-sdk := parallaxsdk.NewDatadomeSDK("key", "https://example.host.com",
+sdk := parallaxsdk.NewDatadomeSDK("Key", "https://example.host.com",
     parallaxsdk.WithCustomTimeout(45*time.Second),
     parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
 ```
@@ -66,60 +66,65 @@ sdk := parallaxsdk.NewDatadomeSDK("key", "https://example.host.com",
 ### 🕵️‍♂️ Generate New User Agent
 
 ```go
-sdk := parallaxsdk.NewDatadomeSDK("key", "")
+sdk := parallaxsdk.NewDatadomeSDK("Key", "")
+
 userAgent, err := sdk.GenerateUserAgent(parallaxsdk.TaskGenUserAgent{
-    Region: "pl",
-    Site: "vinted",
+    Region: "com",
+    Site: "site",
 })
 if err != nil {
     panic(err)
 }
+
 fmt.Println(userAgent)
-// Output:
-// &parallaxsdk.UserAgentResponse{
-//     Message: "New device successfully created.",
-//     UserAgent: "Mozilla/5.0 ...",
-//     SecHeader: "...",
-//     SecFullVersionList: "...",
-//     SecPlatform: "...",
-//     SecArch: "...",
-// }
 ```
 
 ### 🔍 Get Task Data
 
 ```go
-sdk := parallaxsdk.NewDatadomeSDK("key", "")
-challengeURL := "https://geo.captcha-delivery.com/captcha/?initialCid=initialCid&cid=cid&referer=referer&hash=hash&t=t&s=s&e=e"
-cookie := "cookie"
+sdk := parallaxsdk.NewDatadomeSDK("Key", "")
+
+challengeURL := "https://www.example.com/captcha/?initialCid=initialCid&cid=cid&referer=referer&hash=hash&t=t&s=1&e=e"
+cookie := "cookie_value"
+
 taskData, productType, err := parallaxsdk.ParseChallengeURL(challengeURL, cookie)
 if err != nil {
     panic(err)
 }
+
 fmt.Println(taskData, productType)
-// Output:
-// &parallaxsdk.TaskDatadomeCookieData{
-//     Cid: "cookie",
-//     B: "",
-//     E: "e",
-//     S: "s",
-//     InitialCid: "initialCid",
-// }, "captcha"
+```
+
+### 📄 Parse Challenge HTML
+
+```go
+htmlBody := "<html><script>dd={example:1}</script></html>"
+prevCookie := "cookie_value"
+
+taskData, productType, err := parallaxsdk.ParseChallengeHTML(htmlBody, prevCookie)
+if err != nil {
+    panic(err)
+}
+
+fmt.Println(taskData, productType)
 ```
 
 ### 🍪 Generate Cookie
 
 ```go
-sdk := parallaxsdk.NewDatadomeSDK("key", "")
-challengeURL := "https://geo.captcha-delivery.com/captcha/?initialCid=initialCid&cid=cid&referer=referer&hash=hash&t=t&s=s&e=e"
-cookie := "cookie"
+sdk := parallaxsdk.NewDatadomeSDK("Key", "")
+
+challengeURL := "https://www.example.com/captcha/?initialCid=initialCid&cid=cid&referer=referer&hash=hash&t=t&s=1&e=e"
+cookie := "cookie_value"
+
 taskData, productType, err := parallaxsdk.ParseChallengeURL(challengeURL, cookie)
 if err != nil {
     panic(err)
 }
+
 cookieResp, err := sdk.GenerateDatadomeCookie(parallaxsdk.TaskDatadomeCookie{
-    Site: "vinted",
-    Region: "pl",
+    Site: "site",
+    Region: "com",
     Data: *taskData,
     Pd: productType,
     Proxy: "http://user:pas@addr:port",
@@ -128,52 +133,45 @@ cookieResp, err := sdk.GenerateDatadomeCookie(parallaxsdk.TaskDatadomeCookie{
 if err != nil {
     panic(err)
 }
+
 fmt.Println(cookieResp)
-// Output:
-// &parallaxsdk.DatadomeCookieResponse{
-//     Message: "datadome=cookie_value",
-//     UserAgent: "Mozilla/5.0 ...",
-// }
 ```
 
 ### 🏷️ Generate Tags Cookie
 
 ```go
-sdk := parallaxsdk.NewDatadomeSDK("key", "")
+sdk := parallaxsdk.NewDatadomeSDK("Key", "")
 cookieResp, err := sdk.GenerateDatadomeTagsCookie(parallaxsdk.TaskDatadomeTagsCookie{
-    Site: "vinted",
-    Region: "pl",
+    Site: "site",
+    Region: "com",
     Proxy: "http://user:pas@addr:port",
     Proxyregion: "eu",
+    Cid: "cookie_value"
 })
 if err != nil {
     panic(err)
 }
+
 fmt.Println(cookieResp)
-// Output:
-// &parallaxsdk.DatadomeCookieResponse{
-//     Message: "datadome=cookie_value",
-//     UserAgent: "Mozilla/5.0 ...",
-// }
 ```
 
 ### 🔍 Detect and Parse Challenge
 
 ```go
-sdk := parallaxsdk.NewDatadomeSDK("key", "")
+sdk := parallaxsdk.NewDatadomeSDK("Key", "")
+
 responseBody := "<html>...</html>" // Response body from website
-prevCookie := "previous_datadome_cookie"
+prevCookie := "cookie_value"
 
 isBlocked, taskData, productType, err := parallaxsdk.DetectChallengeAndParse(responseBody, prevCookie)
 if err != nil {
     panic(err)
 }
+
 if isBlocked {
-    fmt.Printf("Datadome challenge detected: %s\n", productType)
-    // Use taskData with GenerateDatadomeCookie to solve the challenge
     cookieResp, err := sdk.GenerateDatadomeCookie(parallaxsdk.TaskDatadomeCookie{
-        Site: "vinted",
-        Region: "pl",
+        Site: "site",
+        Region: "com",
         Data: *taskData,
         Pd: productType,
         Proxy: "http://user:pas@addr:port",
@@ -182,29 +180,9 @@ if isBlocked {
     if err != nil {
         panic(err)
     }
+
     fmt.Println(cookieResp)
 }
-```
-
-### 📄 Parse Challenge HTML
-
-```go
-htmlBody := "<html><script>dd={cid:'abc',t:'fe',s:123,e:'xyz',b:'1'}</script></html>"
-prevCookie := "previous_datadome_cookie"
-
-taskData, productType, err := parallaxsdk.ParseChallengeHTML(htmlBody, prevCookie)
-if err != nil {
-    panic(err)
-}
-fmt.Println(taskData, productType)
-// Output:
-// &parallaxsdk.TaskDatadomeCookieData{
-//     Cid: "previous_datadome_cookie",
-//     B: "1",
-//     E: "xyz",
-//     S: "123",
-//     InitialCid: "abc",
-// }, "captcha"
 ```
 
 ---
