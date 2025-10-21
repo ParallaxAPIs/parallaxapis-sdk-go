@@ -286,8 +286,13 @@ fmt.Printf("%+v\n", holdCaptchaResult)
 
 ## 📚 Documentation & Help
 
-- Full API docs: [GitHub](https://github.com/parallaxapis/parallaxapis-sdk-go)
-- Issues & support: [GitHub Issues](https://github.com/parallaxapis/parallaxapis-sdk-go/issues)
+- Full API docs & support: [Discord](https://www.parallaxsystems.io/join?s=gh)
+
+---
+
+## 🌟 Contributing
+
+Got feedback or found a bug? Feel free to open an issue or send us a pull request!
 
 ---
 
