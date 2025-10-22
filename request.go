@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"strings"
 
-	http "github.com/bogdanfinn/fhttp"
+	"net/http"
 )
 
 type SDK struct {
@@ -72,6 +72,7 @@ func CreateClient(authKey, apiHost string, options ...Option) *SDK {
 				return url.Parse(*clientConfig.proxy)
 			},
 		}
+
 	}
 
 	return sdk
@@ -84,21 +85,28 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 		return fmt.Errorf("marshal payload: %w", err)
 	}
 
-	uri := fmt.Sprintf("%s%s", s.APIHost, endpoint)
+	uri, err := url.JoinPath(s.APIHost, endpoint)
+
+	if err != nil {
+		return fmt.Errorf("creating uri error: %w", err)
+	}
 
 	resp, err := s.client.Post(uri, "application/json", bytes.NewReader(b))
 
 	if err != nil {
 		return fmt.Errorf("POST %s failed: %w", endpoint, err)
 	}
+
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
+
 	if err != nil {
 		return fmt.Errorf("read response: %w", err)
 	}
 
 	var env ErrorEnv
+
 	if err := json.Unmarshal(body, &env); err != nil {
 		return fmt.Errorf("unmarshal envelope: %w, body: \n%s", err, string(body))
 	}
