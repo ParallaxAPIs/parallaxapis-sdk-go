@@ -1,4 +1,4 @@
-# <img src="logo.png" alt="Parallax Logo" width="30" height="30" style="vertical-align: middle;"> ParallaxAPIs Go SDK: Datadome & PerimeterX
+# <img src="https://github.com/ParallaxAPIs/.github/blob/main/profile/logo.png" alt="Parallax Logo" width="30" height="30" style="vertical-align: middle;"> ParallaxAPIs Go SDK: Datadome & PerimeterX
 
 **Go SDK for bypassing DataDome and PerimeterX anti-bot protection.**
 
