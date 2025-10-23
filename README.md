@@ -35,7 +35,7 @@ Get started with ParallaxAPIs SDK's in under 5 minutes:
 ## 📦 Installation
 
 ```bash
-go get github.com/parallaxapis/parallaxapis-sdk-go
+go get github.com/ParallaxAPIs/parallaxapis-sdk-go
 ```
 
 ---
@@ -47,7 +47,7 @@ go get github.com/parallaxapis/parallaxapis-sdk-go
 ```go
 import (
     "time"
-    "github.com/parallaxapis/parallaxapis-sdk-go"
+    "github.com/ParallaxAPIs/parallaxapis-sdk-go"
 )
 
 // Basic initialization with API key
@@ -200,7 +200,7 @@ if isBlocked {
 ```go
 import (
     "time"
-    "github.com/parallaxapis/parallaxapis-sdk-go"
+    "github.com/ParallaxAPIs/parallaxapis-sdk-go"
 )
 
 // Basic initialization with API key
