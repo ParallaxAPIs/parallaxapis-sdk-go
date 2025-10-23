@@ -7,6 +7,8 @@ github.com/bogdanfinn/utls v1.7.4-barnius h1:1ldNJEpKdkrx7b8hEc6MRkjnZIF8f2lDcTt
 github.com/bogdanfinn/utls v1.7.4-barnius/go.mod h1:SUn0CoHGVp/akGNuaqh99yvovu64PCP2LbWd3Z/Laic=
 github.com/cloudflare/circl v1.5.0 h1:hxIWksrX6XN5a1L2TI/h53AGPhNHoUBo+TD1ms9+pys=
 github.com/cloudflare/circl v1.5.0/go.mod h1:uddAzsPgqdMAYatqJ0lsjX1oECcQLIlRpzZh3pJrofs=
+github.com/cloudflare/circl v1.6.1 h1:zqIqSPIndyBh1bjLVVDHMPpVKqp8Su/V+6MeDzzQBQ0=
+github.com/cloudflare/circl v1.6.1/go.mod h1:uddAzsPgqdMAYatqJ0lsjX1oECcQLIlRpzZh3pJrofs=
 github.com/klauspost/compress v1.17.11 h1:In6xLpyWOi1+C7tXUUWv2ot1QvBjxevKAaI6IXrJmUc=
 github.com/klauspost/compress v1.17.11/go.mod h1:pMDklpSncoRMuLFrf1W9Ss9KT+0rH90U12bZKk7uwG0=
 github.com/useflyent/fhttp v0.0.0-20211004035111-333f430cfbbf h1:GExHWNOdGk8EmZMiIzJGWkEWEIzlVBHBqg6EZrfnQFk=
