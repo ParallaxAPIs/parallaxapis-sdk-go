@@ -38,6 +38,8 @@ Get started with ParallaxAPIs SDK's in under 5 minutes:
 go get github.com/ParallaxAPIs/parallaxapis-sdk-go
 ```
 
+![Go Get Demo](https://raw.githubusercontent.com/ParallaxAPIs/.github/main/profile/gogetparallax.gif)
+
 ---
 
 ## 🧑‍💻 Datadome Usage
