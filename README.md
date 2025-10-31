@@ -67,7 +67,8 @@ sdk := parallaxsdk.NewDatadomeSDK("Key", "", parallaxsdk.WithClientProxy("http:/
 // Multiple options combined
 sdk := parallaxsdk.NewDatadomeSDK("Key", "https://example.host.com",
     parallaxsdk.WithCustomTimeout(45*time.Second),
-    parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"))
+    parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"),
+    parallaxsdk.WithInsecureSkipVerify())
 ```
 
 ### 🕵️‍♂️ Generate New User Agent
