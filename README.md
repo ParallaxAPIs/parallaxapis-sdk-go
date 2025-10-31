@@ -35,7 +35,7 @@ Get started with ParallaxAPIs SDK's in under 5 minutes:
 ## 📦 Installation
 
 ```bash
-go get github.com/parallaxapis/parallaxapis-sdk-go
+go get github.com/ParallaxAPIs/parallaxapis-sdk-go
 ```
 
 ![Go Get Demo](https://raw.githubusercontent.com/ParallaxAPIs/.github/main/profile/gogetparallax.gif)
