@@ -2,6 +2,7 @@ package parallaxsdk
 
 import (
 	"bytes"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -66,13 +67,18 @@ func CreateClient(authKey, apiHost string, options ...Option) *SDK {
 		client:  &http.Client{Timeout: clientConfig.timeout},
 	}
 
-	if clientConfig.proxy != nil {
-		sdk.client.Transport = &http.Transport{
-			Proxy: func(r *http.Request) (*url.URL, error) {
+	needTransport := clientConfig.proxy != nil || clientConfig.insecureSkipVerify
+	if needTransport {
+		tr := &http.Transport{}
+		if clientConfig.proxy != nil {
+			tr.Proxy = func(r *http.Request) (*url.URL, error) {
 				return url.Parse(*clientConfig.proxy)
-			},
+			}
 		}
-
+		if clientConfig.insecureSkipVerify {
+			tr.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		}
+		sdk.client.Transport = tr
 	}
 
 	return sdk
