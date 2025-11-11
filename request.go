@@ -132,7 +132,7 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 	return nil
 }
 
-// checkUsage
+// checkUsage EP
 func (s *SDK) CheckUsage(site string) (UsageResponse, error) {
 	response := UsageResponse{}
 
