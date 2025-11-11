@@ -133,7 +133,7 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 }
 
 // checkUsage
-func (s *SDK) checkUsage(site string) (UsageResponse, error) {
+func (s *SDK) CheckUsage(site string) (UsageResponse, error) {
 	response := UsageResponse{}
 
 	uri, err := url.JoinPath(s.APIHost, `/usage`)
