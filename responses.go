@@ -35,6 +35,6 @@ type GenHoldCaptchaResponse struct {
 }
 
 type UsageResponse struct {
-	UsedRequests int64 `json:"usedRequests"`
-	RequestsLeft int64 `json:"requestsLeft"`
+	UsedRequests string `json:"usedRequests"`
+	RequestsLeft int64  `json:"requestsLeft"`
 }
