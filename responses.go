@@ -33,3 +33,8 @@ type GenHoldCaptchaResponse struct {
 	PxCookieResponse
 	FlaggedPow bool `json:"flaggedPOW"` // Indicates if pow is flagged.
 }
+
+type UsageResponse struct {
+	UsedRequests int64 `json:"usedRequests"`
+	RequestsLeft int64 `json:"requestsLeft"`
+}

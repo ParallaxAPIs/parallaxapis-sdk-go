@@ -131,3 +131,35 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 
 	return nil
 }
+
+// checkUsage
+func (s *SDK) checkUsage(site string) (UsageResponse, error) {
+	response := UsageResponse{}
+
+	uri, err := url.JoinPath(s.APIHost, `/usage`)
+	if err != nil {
+		return response, fmt.Errorf("creating uri error: %w", err)
+	}
+
+	prms := url.Values{}
+	prms.Add("site", site)
+	prms.Add("authToken", s.AuthKey)
+
+	uri = fmt.Sprintf(`%s?%s`, uri, prms.Encode())
+	resp, err := s.client.Get(uri)
+	if err != nil {
+		return response, fmt.Errorf("GET %s failed: %w", uri, err)
+	}
+
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return response, fmt.Errorf("read response: %w", err)
+	}
+
+	if err := json.Unmarshal(body, &response); err != nil {
+		return response, fmt.Errorf("unmarshal body to %T: %w", response, err)
+	}
+	return response, nil
+}
