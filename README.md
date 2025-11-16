@@ -70,6 +70,13 @@ sdk := parallaxsdk.NewDatadomeSDK("Key", "https://example.host.com",
     parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"),
     parallaxsdk.WithInsecureSkipVerify(),
 )
+
+usage, err := sdk.CheckUsage("site")
+if err != nil {
+    fmt.Println("Error checking usage:", err)
+    return
+}
+fmt.Println(usage)
 ```
 
 ### 🕵️‍♂️ Generate New User Agent
@@ -225,6 +232,13 @@ sdk := parallaxsdk.NewPerimeterxSDK("Key", "example.host.com",
     parallaxsdk.WithClientProxy("http://user:pass@proxy.example.com:8080"),
     parallaxsdk.WithInsecureSkipVerify(),
 )
+
+usage, err := sdk.CheckUsage("site")
+if err != nil {
+    fmt.Println("Error checking usage:", err)
+    return
+}
+fmt.Println(usage)
 ```
 
 ### 🍪 Generate PX Cookie
