@@ -122,7 +122,8 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 			return &APIError{Message: env.Message}
 		}
 
-		return &APIError{Message: env.Cookie}
+		//get all data for px error messages
+		return &APIError{Message: formatJSON(body)}
 	}
 
 	if err := json.Unmarshal(body, out); err != nil {

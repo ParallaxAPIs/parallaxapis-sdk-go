@@ -1,6 +1,9 @@
 package parallaxsdk
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 type APIError struct{ Message string }
 
@@ -8,6 +11,18 @@ type ErrorEnv struct {
 	Error   bool   `json:"error"`
 	Message string `json:"message"`
 	Cookie  string `json:"cookie"`
+}
+
+func formatJSON(body []byte) string {
+	var v any
+	if err := json.Unmarshal(body, &v); err != nil {
+		return string(body)
+	}
+	b, err := json.MarshalIndent(v, "", "  ")
+	if err != nil {
+		return string(body)
+	}
+	return string(b)
 }
 
 func (e *APIError) Error() string {
