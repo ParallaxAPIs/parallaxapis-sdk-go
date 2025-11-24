@@ -159,7 +159,7 @@ func ParseChallengeHTML(htmlBody, prevCookie string) (*TaskDatadomeCookieData, s
 	case T_BV:
 		return nil, "", ErrPermanentlyBlocked
 	default:
-		return nil, "", ErrUnknownChallengeType
+		pd = PD_Interstitial
 	}
 
 	return &TaskDatadomeCookieData{
