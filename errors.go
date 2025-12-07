@@ -10,19 +10,28 @@ type APIError struct{ Message string }
 type ErrorEnv struct {
 	Error   bool   `json:"error"`
 	Message string `json:"message"`
-	Cookie  string `json:"cookie"`
 }
 
-func formatJSON(body []byte) string {
-	var v any
+type PXErrorDetails struct {
+	Cookie         string `json:"cookie"`
+	IsFlagged      bool   `json:"isFlagged"`
+	IsMaybeFlagged bool   `json:"isMaybeFlagged"`
+	FlaggedPow     bool   `json:"flaggedPOW"`
+}
+
+func formatPXErrors(body []byte) string {
+	var v PXErrorDetails
 	if err := json.Unmarshal(body, &v); err != nil {
 		return string(body)
 	}
-	b, err := json.MarshalIndent(v, "", "  ")
-	if err != nil {
-		return string(body)
-	}
-	return string(b)
+	// add message fields
+	return fmt.Sprintf(
+		"message: '%v', isFlagged: %t, isMaybeFlagged: %t, flaggedPOW: %t",
+		v.Cookie,
+		v.IsFlagged,
+		v.IsMaybeFlagged,
+		v.FlaggedPow,
+	)
 }
 
 func (e *APIError) Error() string {

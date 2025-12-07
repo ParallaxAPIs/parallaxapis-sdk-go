@@ -123,7 +123,7 @@ func (s *SDK) request(endpoint string, payload any, out any) error {
 		}
 
 		//get all data for px error messages
-		return &APIError{Message: formatJSON(body)}
+		return &APIError{Message: formatPXErrors(body)}
 	}
 
 	if err := json.Unmarshal(body, out); err != nil {

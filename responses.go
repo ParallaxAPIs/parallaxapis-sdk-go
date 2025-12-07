@@ -18,10 +18,12 @@ type DatadomeCookieResponse struct {
 
 // PxCookieResponse is the response type for PX cookies generation.
 type PxCookieResponse struct {
-	Message        string `json:"message"`
 	Cookie         string `json:"cookie"`
-	Vid            string `json:"vid"`            // Used to set the _pxvid cookie.
-	Cts            string `json:"cts"`            // Used to set the pxcts cookie.
+	Vid            string `json:"vid"` // Used to set the _pxvid cookie.
+	Cts            string `json:"cts"` // Used to set the pxcts cookie.
+	Uuid           string `json:"uuid"`
+	Model          string `json:"model"`          // The device model used for generation.
+	DeviceFp       string `json:"device_fp"`      // The device fingerprint used for generation.
 	IsFlagged      bool   `json:"isFlagged"`      // Indicate if the generation might have been flagged during generation.
 	IsMaybeFlagged bool   `json:"isMaybeFlagged"` // Indicate if the generation might have been flagged during generation.
 	UserAgent      string `json:"UserAgent"`      // The device used for generation.
