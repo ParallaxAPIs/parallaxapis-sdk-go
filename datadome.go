@@ -111,15 +111,16 @@ func ParseChallengeURL(challengeURL, prevCookie string) (*TaskDatadomeCookieData
 		b = "0"
 	}
 
-	if prevCookie == "" {
-		prevCookie = q.Get("cid")
+	queryCid := q.Get("cid")
+	if queryCid == "" {
+		queryCid = prevCookie
 	}
 
 	return &TaskDatadomeCookieData{
 		B:          b,
 		S:          q.Get("s"),
 		E:          q.Get("e"),
-		Cid:        prevCookie,
+		Cid:        queryCid,
 		InitialCid: q.Get("initialCid"),
 	}, pd, nil
 }
@@ -166,15 +167,16 @@ func ParseChallengeHTML(htmlBody, prevCookie string) (*TaskDatadomeCookieData, s
 		pd = PD_Interstitial
 	}
 
-	if prevCookie == "" {
-		prevCookie = dd.Cid
+	htmlCookie := dd.Cookie
+	if htmlCookie == "" {
+		htmlCookie = prevCookie
 	}
 
 	return &TaskDatadomeCookieData{
 		B:          fmt.Sprint(dd.B),
 		S:          fmt.Sprint(dd.S),
 		E:          dd.E,
-		Cid:        prevCookie,
+		Cid:        htmlCookie,
 		InitialCid: dd.Cid,
 	}, pd, nil
 }
