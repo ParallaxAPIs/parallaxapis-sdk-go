@@ -8,7 +8,7 @@
 
 ## 📖 Overview
 
-ParallaxAPIs provides a **request-based solution** for bypassing DataDome and PerimeterX anti-bot systems. Instead of relying on slow, resource-heavy browser automation, our API generates valid cookies and tokens in **200-400ms** through direct HTTP requests.
+ParallaxAPIs provides a **request-based solution** for bypassing DataDome and PerimeterX antibot systems. Instead of relying on slow, resource-heavy browser automation, our API generates valid cookies and tokens in **200-400ms** through direct HTTP requests.
 
 **What We Solve:**
 - ✅ **DataDome** - Slider captchas, interstitial pages, cookie generation, tags payload
@@ -29,10 +29,9 @@ ParallaxAPIs provides a **request-based solution** for bypassing DataDome and Pe
 Get started with ParallaxAPIs SDK's in under 5 minutes:
 
 1. **Join our [Discord](https://www.parallaxsystems.io/join?s=gh)** - Connect with our community
-2. **Create a ticket** - Request your API key
-3. **Get your free trial** - Start testing immediately
-4. **[Install the SDK](#-installation)** - Choose your preferred language
-5. **Solve all anti-bots in seconds** - Start bypassing DataDome, PerimeterX & more
+2. **[Get your free trial](https://parallaxapis.com/#quickstart)** - Start testing immediately
+3. **[Install the SDK](#-installation)** - Choose your preferred language
+4. **Solve all antibots in seconds** - Start bypassing DataDome, PerimeterX & more
 
 ---
 
